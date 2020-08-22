@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+</head>
+<body>
+	<h1>내장함수 - eval 함수</h1>
+	<hr>
+	<p>eval(String) : 문자열을 전달받아 JavaScript 코드로 변환하여 반환하는 함수</p>
+	
+	<script type="text/javascript">
+	var str="20 + 10";
+	//alert(str);
+	//alert(eval(str));
+	
+	//var input=prompt("연산식을 입력해 주세요.");
+	//alert("결과 = "+eval(input));
+	
+	var funVar="function() { alert('익명함수 호출'); }";
+	//alert(typeof(funVar));//자료형 : String
+	//funVar();
+	
+	//문자형 상수를 함수로 변환하여 선언하고자 할 경우 
+	//() 기호를 이용하여 변환
+	//alert(typeof(eval("("+funVar+")")));
+	//문자형 상수를 함수로 변환하여 선언과 동시에 호출
+	eval("("+funVar+")")();
+	</script>	
+</body>
+</html>

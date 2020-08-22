@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+</head>
+<body>
+	<h1>이벤트(Event) - Event Listener</h1>
+	<hr>
+	<!-- 태그의 이벤트 속성에 이벤트 핸들러 함수를 여러 개 등록하여 이벤트 처리 가능 -->
+	<button type="button" onclick="eventHandler1(); eventHandler2();">이벤트 버튼-1</button>
+	<button type="button" id="btn">이벤트 버튼-2</button>
+	
+	<script type="text/javascript">
+	function eventHandler1() {
+		alert("이벤트 핸들러 실행-1");
+	}
+	
+	function eventHandler2() {
+		alert("이벤트 핸들러 실행-2");
+	}
+	
+	
+	var btn=document.getElementById("btn");
+	/*
+	//엘리먼트 객체에 이벤트 속성에 이벤트 핸들러 등록
+	// => 이벤트 핸들러가 하나만 등록
+	btn.onclick=function() {
+		alert("이벤트 핸들러 실행-1");
+	};
+	
+	btn.onclick=function() {
+		alert("이벤트 핸들러 실행-2");
+	};
+	*/
+	
+	//Element.addEventListener(eventType,callback,capture) 
+	// => 엘리먼트에서 발생되는 이벤트에 대한 이벤트 핸들러를 등록하는 메소드 
+	// => 동일 이벤트에 대한 이벤트 핸들러를 여러 개 등록 가능 
+	btn.addEventListener("click", function() {
+		alert("이벤트 핸들러 실행-1");
+	},false);
+	
+	btn.addEventListener("click", function() {
+		alert("이벤트 핸들러 실행-2");
+	},false);
+	</script>	
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML</title>
+</head>
+<body>
+	<h1>video 태그</h1>
+	<hr>
+	<!-- 재생 가능한 비디오 파일 종류 -->
+	<!-- 1.H.264/AVC : mp4 파일 - IE9 이상, 사파리, 크롬, 파이어폭스등 -->
+	<!-- 2.Ogg Treora : ogg(ogv) 파일 - 오페라, 크롬, 파이어폭스등 -->
+	<!-- 3.WebM : webm 파일 - 오페라, 크롬, 파이어폭스등 -->
+	
+	<!-- video 태그 : 비디오 파일 재생 -->
+	<!-- <video src="video/gate.mp4" autoplay controls width="450"></video> -->
+	<!-- <video src="video/gate.ogv" autoplay controls width="450"></video> -->
+	<!-- <video src="video/gate.webm" autoplay controls width="450"></video> -->
+	
+	<!-- poster 속성 : 동영상이 재생되지 않을 경우 출력될 포스터 이미지 파일의 URL 주소를 속성값으로 설정  -->
+	<video autoplay controls width="450" poster="images/Koala.jpg">
+		<source src="video/gate.webm" type="video/webm">
+		<source src="video/gate.ogv" type="video/ogg">
+		<source src="video/gate.mp4" type="video/mp4">
+	</video>
+</body>
+</html>

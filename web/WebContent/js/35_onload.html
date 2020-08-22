@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+<script type="text/javascript">
+/*
+function load() {
+	alert("DOM를 이용한 문서 조작 가능");
+}
+*/
+
+//window.onload : window 객체가 생성된 경우 처리될 명령을 
+//이벤트 핸들러(함수)로 등록하기 위한 객체의 이벤트 속성
+// => window 객체(document 객체)가 생성되어야만 DOM를 이용한 문서 조작 가능
+window.onload=function() {
+	alert("DOM를 이용한 문서 조작 가능");
+}
+</script>
+</head>
+<!-- onXXX : 태그의 이벤트 속성 - 속성값으로 이벤트 핸들러 등록(함수 호출) -->
+<!-- onload 이벤트 : 태그가 파싱되어 Element 객체로 생성된 경우 발생되는 이벤트 -->
+<!-- <body onload="load();">  -->
+<body>
+	<h1>DOM(Document Object Model) - onload 이벤트</h1>
+	<hr>
+	<p>이벤트(Event) : 태그(Element 객체)에 관련된 사건</p>
+	<p>자바스트립트로 이벤트 핸들러(함수)를 생성하여 이벤트가 발생된 경우 이벤트 처리</p>
+	<p>태그(Element 객체)에서 이벤트가 발생될 경우 처리할 이벤트 핸들러 등록</p>
+	<p>이벤트 핸들러 등록 방법<br>
+	1.태그의 이벤트 속성의 속성값으로 이벤트 핸들러 등록<br>
+	2.자바스트립트의 Element 객체에 이벤트 요소에 이벤트 핸들러 등록</p>
+
+	<script type="text/javascript">
+	//onload 이벤트 핸들러를 사용하지 않아도 DOM를 이용한 문서 조작 가능
+	</script> 
+</body>
+</html>
+
+

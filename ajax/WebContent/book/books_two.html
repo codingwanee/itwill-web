@@ -1,0 +1,94 @@
+<!-- books.jsp 문서를 AJAX 요청하여 응답결과를 출력하는 문서 -->
+<!-- => ajax.js 모듈 이용 : 클래스(프로퍼티와 메소드)를 사용하여 Ajax 기능 제공 -->
+<!-- => books.xsl 문서를 이용하여 XML 응답결과를 파싱하여 출력 -->
+
+<!-- XSLT 문서를 이용한 XML 응답결과 파싱 방법 -->
+<!-- 1.XSLT 문서와 JSP 문서(응답결과 : XML)를 요청하여 두 문서의 응답결과 저장 -->
+<!-- 2.XSLT 문서의 응답결과를 이용하여 JSP 문서의 응답결과(XML)를 HTML로 변환 -->
+<!-- 3.변환된 HTML를 이용하여 문서 조작 - DHTML -->
+
+<!-- ajax.js 모듈을 이용할 경우 여러 개의 문서 요청 가능 -->
+<!-- => XMLHttpRequest 객체가 요청 객체마다 존재하여 처리 -->
+<!-- => 완전한 비동기식 요청에 대한 응답 처리 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AJAX</title>
+<script type="text/javascript" src="/ajax/js/ajax.js"></script>
+</head>
+<body>
+	<h1>XSLT 문서를 이용한 XML 파싱(ajax.js)</h1>
+	<hr>
+	<h2>교재목록</h2>
+	<div id="bookList"></div>
+	
+	<script type="text/javascript">
+	var xmlDoc=null;//JSP 문서의 응답결과를 저장하기 위한 전역변수
+	var xslDoc=null;//XSLT 문서의 응답결과를 저장하기 위한 전역변수
+	
+	//books.jsp 문서를 요청하는 함수 호출
+	loadBooksXML();
+	//books.xsl 문서를 요청하는 함수 호출
+	loadBooksXSL();
+	
+	//books.jsp 문서를 요청하는 함수
+	// => 응답결과를 제공받아 전역변수에 저장 후 변환 작업
+	function loadBooksXML() {
+		new site.itwill.Ajax("GET", "books.jsp", null, function(req) {
+			if(req.readyState==4) {
+				if(req.status==200) {
+					xmlDoc=req.responseXML;
+					//응답결과 처리 후 변환 작업 함수 호출
+					doXSLT();
+				} else {
+					alert("에러코드 = "+req.status);
+				}
+			}
+		});
+	}
+	
+	//XSLT 문서를 요청하는 함수
+	// => 응답결과를 제공받아 전역변수에 저장 후 변환 작업
+	function loadBooksXSL() {
+		new site.itwill.Ajax("GET", "books.xsl", null, function(req) {
+			if(req.readyState==4) {
+				if(req.status==200) {
+					xslDoc=req.responseXML;
+					//응답결과 처리 후 변환 작업 함수 호출
+					doXSLT();
+				} else {
+					alert("에러코드 = "+req.status);
+				}
+			}
+		});
+	}
+	
+	//XML 데이타와 XSL 데이타를 이용하여 변환 작업을 처리하는 함수
+	function doXSLT() {
+		//두 요청에 대한 응답결과가 하나라도 없는 경우 변환 작업 취소
+		if(xmlDoc==null || xslDoc==null) return;
+		
+		var bookList=document.getElementById("bookList");
+		
+		if(window.activeXObject) {//IE4~IE6
+			 bookList.innerHTML=xmlDoc.transformNode(xslDoc);
+		} else {//IE7 이상 또눈 기타 브라우저
+			//XSLTProcessor 객체(XSLT 변환 객체) 생성
+			var xsltProcessor=new XSLTProcessor();
+		
+			//XSLTProcessor 객체에 XSL 데이타를 전달하여 저장
+			// => XSLTProcessor.importStylesheet(XSL) 메소드 호출 
+			xsltProcessor.importStylesheet(xslDoc);
+			
+			//XSLTProcessor 객체에 XML 데이타를 전달하여 변환작업 후 결과(Element 객체)를 반환받아 저장
+			// => XSLTProcessor.transformToFragmemnt(XML,document) 메소드 호출
+			var fragment=xsltProcessor.transformToFragment(xmlDoc,document);
+			
+			//반환받은 Element 객체를 출력 영역의 자식 엘리먼트로 추가
+			bookList.appendChild(fragment);
+		}
+	}
+	</script>
+</body>
+</html>

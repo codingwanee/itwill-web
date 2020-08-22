@@ -1,0 +1,107 @@
+<!-- news_xml.jsp 문서를 요청하여 뉴스 정보들을 XML 형식의 텍스트로 제공받아 출력하는 문서 -->
+<!-- XML : 엘리먼트를 이용하여 값을 구분하는 구조화된 텍스트 데이타 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AJAX</title>
+<script type="text/javascript" src="/ajax/js/xhr.js"></script>
+<style type="text/css">
+#news {
+	width: 50%;
+	margin: 0 auto;
+}
+
+#newsHead {
+	padding: 5px;
+	text-align: center;
+	font-size: x-large;
+	border: 2px solid black;
+}
+
+#newsList {
+	padding: 5px;
+	font-size: medium;
+	border: 2px dashed black;
+	display: none;
+}
+</style>
+</head>
+<body>
+	<h1>오늘의 헤드라인 뉴스(XML)</h1>
+	<hr>
+	<div id="news">
+		<div id="newsHead">헤드라인 뉴스</div>
+		<div id="newsList">
+			<!-- 
+			<ol>
+				<li>뉴스제목-1</li>
+				<li>뉴스제목-2</li>
+				<li>뉴스제목-3</li>
+				<li>뉴스제목-4</li>
+				<li>뉴스제목-5</li>
+			</ol>
+			-->
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+	document.getElementById("news").onmouseover=function() {
+		sendRequest("GET", "news_xml.jsp", null, displayNewsList);
+		document.getElementById("newsList").style.display="block";
+	}
+	
+	document.getElementById("news").onmouseout=function() {
+		document.getElementById("newsList").style.display="none";
+	}
+	
+	function displayNewsList() {
+		if(xhr.readyState==4) {
+			if(xhr.status==200) {
+				var xmlDoc=xhr.responseXML;
+				//alert(xmlDoc);
+				
+				/*
+				//Document.documentElement : RootElement 객체를 저장하는 프로퍼티
+				var items=xmlDoc.documentElement;
+				//alert(items);
+				//Element.nodeName : 엘리먼트의 태그명을 저장하는 프로퍼티
+				//alert(items.nodeName);
+				//Element.nodeValue : 엘리먼트의 내용을 저장하는 프로퍼티
+				//alert(items.nodeValue);
+				//Element.childNodes : 엘리먼트의 자식 엘리먼트들(NodeList 객체)을 저장하는 프로퍼티
+				//alert(items.childNodes);
+				alert(items.childNodes.length);
+				*/
+				
+				//Document.getElementsByTagName(tagName) : 엘리먼트의 태그명을
+				//이용하여 엘리먼트들을 검색하여 HTMLCollection 객체로 반환하는 메소드
+				var itemList=xmlDoc.getElementsByTagName("item");
+				//alert(itemList);
+				//alert(itemList.length);
+				
+				var html="<ol>";
+				for(i=0;i<itemList.length;i++) {
+					//Collection.item(index) : index 위치의 Element 객체를 반환하는 메소드
+					var item=itemList.item(i);
+					//alert(item);
+					
+					var headline=item.getElementsByTagName("headline").item(0).firstChild.nodeValue;
+					var publisher=item.getElementsByTagName("publisher").item(0).firstChild.nodeValue;
+					html+="<li>"+headline+"["+publisher+"]</li>";
+				}
+				html+="</ol>";
+
+				document.getElementById("newsList").innerHTML=html;
+			} else {
+				document.getElementById("newsList").innerHTML="에러코드 = "+xhr.status;
+			}
+		}
+	}
+	</script>
+</body>
+</html>
+
+
+
+

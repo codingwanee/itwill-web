@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AJAX</title>
+<script type="text/javascript" src="log.js"></script>
+<script type="text/javascript" src="/ajax/js/xhr.js"></script>
+<script type="text/javascript" src="/ajax/js/ajax.js"></script>
+</head>
+<body>
+	<h1>회원목록</h1>
+	<hr>
+	<div id="log"></div>
+	
+	<script type="text/javascript">
+	/*
+	sendRequest("GET", "member_xml.jsp", null, function() {
+		if(xhr.readyState==4) {
+			if(xhr.status==200) {
+				var xmlDoc=xhr.responseXML;
+				
+				var code=xmlDoc.getElementsByTagName("code").item(0).firstChild.nodeValue;
+				//log("code = "+code);
+				
+				if(code=="success") {
+					var memberList=xmlDoc.getElementsByTagName("member");
+					//log("검색 회원수 = "+memberList.length);
+					
+					for(i=0;i<memberList.length;i++) {
+						var member=memberList.item(i);
+						var id=member.getElementsByTagName("id").item(0).firstChild.nodeValue;
+						var name=member.getElementsByTagName("name").item(0).firstChild.nodeValue;
+						log("아이디 = "+id+", 이름 = "+name);
+					}
+				} else {
+					log("검색된 회원정보가 존재하지 않습니다.");
+				}
+			} else {
+				log("에러코드 = "+xhr.status);
+			}
+		}
+	});
+	*/
+	
+	new site.itwill.Ajax("GET", "member_xml.jsp", null, function(req) {
+		if(req.readyState==4) {
+			if(req.status==200) {
+				var xmlDoc=req.responseXML;
+				
+				var code=xmlDoc.getElementsByTagName("code").item(0).firstChild.nodeValue;
+				//log("code = "+code);
+				
+				if(code=="success") {
+					var memberList=xmlDoc.getElementsByTagName("member");
+					//log("검색 회원수 = "+memberList.length);
+					
+					for(i=0;i<memberList.length;i++) {
+						var member=memberList.item(i);
+						var id=member.getElementsByTagName("id").item(0).firstChild.nodeValue;
+						var name=member.getElementsByTagName("name").item(0).firstChild.nodeValue;
+						log("아이디 = "+id+", 이름 = "+name);
+					}
+				} else {
+					log("검색된 회원정보가 존재하지 않습니다.");
+				}
+			} else {
+				log("에러코드 = "+req.status);
+			}
+		}		
+	});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+

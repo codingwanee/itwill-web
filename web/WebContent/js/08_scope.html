@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+</head>
+<body>
+	<h1>전역변수와 지역변수</h1>
+	<hr>
+	<p>전역변수(Global Variable) : 함수 외부에서 선언된 변수
+	- 모든 함수에서 사용 가능</p>
+	<p>지역변수(Local Variable) : 함수 내부에서 선언된 변수
+	- 선언된 함수에서만 사용 가능</p>
+	<p>변수 선언 없이 함수 내부에서 사용된 변수는 전역변수로 인식되어 처리</p>
+	<script type="text/javascript">
+	var globalVar=100;//전역변수
+	
+	function print1() {
+		//alert("print1 함수 = "+globalVar);
+		//globalVar=200;
+		
+		var localVar=300;//지역변수
+		alert("print1 함수 = "+localVar);
+	}
+	
+	function print2() {
+		//alert("print2 함수 = "+globalVar);
+		
+		//localVar 변수가 존재하지 않아 에러 발생
+		alert("print2 함수 = "+localVar);
+	}
+	
+	print1();
+	print2();
+	</script>
+</body>
+</html>
+
+
+
+
+

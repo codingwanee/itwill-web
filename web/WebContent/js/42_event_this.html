@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+<style type="text/css">
+#displayDiv { border: 1px solid red; }
+</style>
+</head>
+<body>
+	<h1>이벤트(Event) - this</h1>
+	<hr>
+	<p>이벤트 핸들러에서 이벤트가 발생된 엘리먼트 객체를 표현하기 위한 키워드</p>
+	<hr>
+	<div id="displayDiv">이벤트 처리</div>
+	<hr>
+	<ul>
+		<li>메뉴-1</li>
+		<li>메뉴-2</li>
+		<li>메뉴-3</li>
+	</ul>
+	
+	<script type="text/javascript">
+	document.getElementById("displayDiv").onclick=function() {
+		//Element.style : 엘리먼트 객체(태그)의 CSS 스타일 속성 표현
+		//document.getElementById("displayDiv").style="color: green";
+		this.style="color: green";
+	};
+	
+	var liList=document.getElementsByTagName("li");
+	
+	/*
+	liList.item(0).onclick=function() {
+		liList.item(0).style="color: orange";
+	}
+	
+	liList.item(1).onclick=function() {
+		liList.item(1).style="color: orange";
+	};
+	
+	liList.item(2).onclick=function() {
+		liList.item(2).style="color: orange";
+	};
+	*/
+	
+	for(i=0;i<liList.length;i++) {
+		//이벤트 핸들러의 명령은 이벤트가 발생된 후 실행
+		// => 반복문 종료 후 이벤트 핸들러 명령 실행
+		//이벤트 핸들러의 엘리먼트 객체는 존재하지 않으므로 요소 사용 불가 - 에러 발생
+		// => liList.item(3) 메소드의 반환 엘리먼트 객체가 없으므로 null 반환
+		liList.item(i).onclick=function() {
+			//liList.item(i).style="color: orange";
+			this.style="color: orange";
+		};
+	}
+	</script>	
+</body>
+</html>
+
+
+
+
+
+
+
+
+

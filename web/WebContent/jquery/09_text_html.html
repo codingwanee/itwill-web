@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+	<h1>text() 메소드 또는 html() 메소드</h1>
+	<hr>
+	<p>검색 엘리먼트의 태그 내용을 변경하거나 태그 내용을 반환하는 메소드</p>
+	<p>text() : 태그 내용으로 포함된 HTML 태그를 미인식하여 처리</p>
+	<p>html() : 태그 내용으로 포함된 HTML 태그를 인식하여 처리</p>
+	<hr>
+	<div id="displayDiv">
+		<p>text() 메소드 또는 html() 메소드 연습</p>
+	</div>
+	<hr>
+	<h3>jQuery 메소드 연습</h3>
+	<h3>jQuery 메소드 연습</h3>
+	<h3>jQuery 메소드 연습</h3>
+	<h3>jQuery 메소드 연습</h3>
+	<h3>jQuery 메소드 연습</h3>
+	
+	<script type="text/javascript">
+	//$(selector).text() : 검색 엘리먼트의 태그 내용을 반환하는 메소드(HTML 태그 제외) 
+	//alert($("#displayDiv").text());
+	//$(selector).html() : 검색 엘리먼트의 태그 내용을 반환하는 메소드(HTML 태그 포함) 
+	//alert($("#displayDiv").html());
+	
+	//$(selector).text(value) : 검색태그의 태그 내용을 변경하는 메소드(HTML 태그를 문자형 상수로 처리)
+	//$("#displayDiv").text("<p style='color:red;'>text() 메소드에 의한 태그 내용 변경</p>");
+	//$(selector).html(value) : 검색태그의 태그 내용을 변경하는 메소드(HTML 태그를 태그로 처리)
+	$("#displayDiv").html("<p style='color:red;'>html() 메소드에 의한 태그 내용 변경</p>");
+	
+	//묵시적 반복에 의해 태그 내용 변경 
+	// => 검색 엘리먼트가 같은 태그 내용으로 변경
+	//$("h3").text("jQuery 메소드 연습-1");
+	
+	//each() 메소드를 이용하여 명시적 반복에 의해 태그 내용 변경
+	// => 검색 엘리먼트가 다른 태그 내용으로 변경
+	/*
+	$("h3").each(function(i) {
+		$(this).text("jQuery 메소드 연습-"+(i+1));
+	});
+	*/
+	
+	//$(selector).text(callback([index][,content]))
+	// => text() 메소드나 html() 메소드는 콜백함수를 이용하여 명시적 반복 처리 가능
+	// => 콜백함수는 반드시 변경하고자 하는 태그 내용 반환
+	// => 콜백함수의 매개변수에는 처리 엘리먼트의 위치값과 태그 내용이 자동 전달되어 저장
+	/*
+	$("h3").text(function(i) {
+		return "jQuery 메소드 연습-"+(i+1);
+	});
+	*/
+	$("h3").text(function(i,content) {
+		return content+"-"+(i+1);
+	});
+	</script>
+</body>
+</html>

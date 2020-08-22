@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS</title>
+<style type="text/css">
+div {
+	width: 300px;
+	height: 300px;
+	border: 1px solid black;
+}
+/* position 속성의 속성값이 static인 경우 박스모델은 중첩되지 않는다. */
+/* position 속성의 속성값이 static이 아닌 경우 박스모델은 중첩될 수 있다. */
+/* => 박스모델의 작성 순서대로 중첩 배치 */
+#red {
+	background: red;
+	position: absolute;
+	top: 100px;
+	left: 200px;
+	/* z-index : 중첩된 박스모델에 대한 배치 순서 관련 스타일 속성 */
+	/* => 정수값 : 정수값이 큰 박스모델을 위에 배치 */
+	z-index: 3;
+}
+
+#green {
+	background: green;
+	position: absolute;
+	top: 200px;
+	left: 400px;
+	z-index: 1;
+}
+
+#blue {
+	background: blue;
+	position: absolute;
+	top: 300px;
+	left: 300px;
+	z-index: 2;
+}
+</style>
+</head>
+<body>
+	<h1>박스모델 배치 관련 스타일 속성</h1>
+	<hr>
+	<div id="red"></div>
+	<div id="green"></div>
+	<div id="blue"></div>	
+</body>
+</html>

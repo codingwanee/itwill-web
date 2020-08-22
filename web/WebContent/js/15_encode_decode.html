@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+</head>
+<body>
+	<h1>내장함수 - Encode 함수와 Decode 함수</h1>
+	<hr>
+	<p>encodeURI(String)과 encodeURIComponent(String) :
+	문자형 상수를 전달받아 부호화 변환하여 반환하는 함수</p>
+	<p>decodeURI(String)과 decodeURIComponent(String) :
+	부호화 문자형 상수를 전달받아 복호화 변환하여 반환하는 함수</p>
+	
+	<script type="text/javascript">
+	var name="홍길동";
+	//alert("name = "+name);
+	
+	//전달받은 문자형 상수를 URI 주소로 사용할 수 있는 
+	//부호화된 문자형 상수로 변환하여 반환
+	//자바스트립트의 location 객체를 이용하여 문서 요청 - 페이지 이동
+	// => 요청 문서에 QueryString를 이용하여 값 전달
+	// => 영문자,숫자,일부 특수문자를 제외한 값 전달 불가능 - URI 주소로 인식 불가
+	// => 미인식 문자를 부호화 변환하여 전달
+	var encodeName=encodeURIComponent(name);
+	//alert("encodeName = "+encodeName);
+
+	var decodeName=decodeURIComponent(encodeName);
+	alert("decodeName = "+decodeName);
+	</script>
+</body>
+</html>

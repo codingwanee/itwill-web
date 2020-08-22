@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS</title>
+<style type="text/css">
+div {
+	font-size: 20px;
+	line-height: 35px;
+}
+
+a { 
+	color: orange;
+	text-decoration: none; 
+}
+
+/* 가상 선택자 : 엘리먼트의 상태를 이용하여 스타일 적용 */
+/* 형식) 선택자:상태 */
+
+/* :link : 하이퍼 링크 페이지를 브라우저에서 한번도 요청하지 않은 상태 */
+a:link { color: lime; }
+
+/* :visited : 하이퍼 링크 페이지를 브라우저에서 한번이상 요청한 상태 */
+a:visited { color: olive; }
+
+/* :hover : 엘리먼트에 마우스 커서가 위치한 상태 */
+a:hover { 
+	color: red;
+	text-decoration: underline; 
+}
+
+/* :active : 엘리먼트를 마우스로 선택한 상태 */
+a:active { color: purple; }
+
+/* :first-child : 선택된 다수의 엘리먼트에서 첫번째 위치의 엘리먼트 */
+ul li:first-child { color: red; }
+
+/* :last-child : 선택된 다수의 엘리먼트에서 마지막 위치의 엘리먼트 */
+ul li:last-child { color: green; }
+
+/* :nth-child(n) : 선택된 다수의 엘리먼트에서 첫번째에서 n번째 위치의 엘리먼트 */
+ul li:nth-child(2) { color: gold; }
+
+/* :nth-last-child(n) : 선택된 다수의 엘리먼트에서 마지막에서 n번째 위치의 엘리먼트 */
+ul li:nth-last-child(2) { color: silver; }
+
+
+/* :nth-child(2n-1) : 선택된 다수의 엘리먼트에서 홀수번째 위치의 엘리먼트 */
+/* => :nth-child(odd) 동일 */
+/* ol li:nth-child(2n-1) { color: orange; } */
+ol li:nth-child(odd) { color: orange; }
+
+/* :nth-child(2n) : 선택된 다수의 엘리먼트에서 짝수번째 위치의 엘리먼트 */
+/* => :nth-child(even) 동일 */
+/* ol li:nth-child(2n) { color: maroon; } */
+ol li:nth-child(even) { color: maroon; }
+
+/* :nth-child(Xn) : 선택된 다수의 엘리먼트에서 X 배수인 위치의 엘리먼트 */
+ol li:nth-child(3n) { color: skyblue; }
+
+/* :only-child : 선택된 엘리먼트가 하나인 상태 */
+ol li:only-child { color: teal; }
+
+input { border: 1px solid red; }
+
+input[type="text"] { border: 1px solid green; }
+
+/* :not(선택자) : 선택 엘리먼트를 제외한 엘리먼트 */
+input:not([type="text"]) { border: 1px solid blue; }
+
+/* :disabled : 선택 엘리먼트 중 비활성화 상태 */
+/* :checked : 선택 엘리먼트 중 체크된 엘리먼트 - input 태그의 type 속성값이 radio 또는 checkbox인 경우 사용 */
+/* :selected : 선택 엘리먼트 중 선택된 엘리먼트 - option 태그인 경우 사용 */
+input[type="text"]:disabled { border: 2px dotted orange; }
+
+/* :focus : 선택 엘리먼트에 촛점이 위치한 상태 */
+input:focus { border: 3px solid red; }
+</style>
+</head>
+<body>
+	<h1>가상 선택자</h1>
+	<hr>
+	<div>
+		<a href="https://www.daum.net">다음</a>&nbsp;&nbsp;&nbsp;
+		<a href="https://www.naver.com">네이버</a>&nbsp;&nbsp;&nbsp;
+		<a href="https://www.google.com">구글</a>&nbsp;&nbsp;&nbsp;
+	</div>
+	<hr>
+	<ul>
+		<li>홍길동</li>
+		<li>임꺽정</li>
+		<li>전우치</li>
+		<li>일지매</li>
+		<li>장길산</li>
+	</ul>
+	<hr>
+	<ol>
+		<li>홍길동</li>
+		<li>임꺽정</li>
+		<li>전우치</li>
+		<li>일지매</li>
+		<li>장길산</li>
+	</ol>
+	<hr>
+	<ol>
+		<li>로빈훗</li>
+	</ol>
+	<hr>
+	<table>
+		<tr>
+			<td>아이디</td>
+			<!-- readonly 속성 : 읽기 전용 기능 제공 - 속성값 생략 가능  -->
+			<!-- <td><input type="text" name="id" value="abc" readonly></td> -->
+			<!-- disabled 속성 : 비활성화 기능 제공 - 속성값 생략 가능  -->
+			<td><input type="text" name="id" value="abc" disabled></td> 
+		</tr>
+		<tr>
+			<td>비밀번호</td>
+			<td><input type="password" name="passwd"></td>
+		</tr>
+		<tr>
+			<td>이름</td>
+			<td><input type="text" name="name"></td>
+		</tr>
+		<tr>
+			<td>이메일</td>
+			<td><input type="email" name="email"></td>
+		</tr>
+	</table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

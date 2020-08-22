@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AJAX</title>
+<style type="text/css">
+#display {
+	width: 50%;
+	padding: 5px;
+	margin-bottom: 10px;
+	font-size: 30px;
+	border: 1px solid red;
+}
+</style>
+</head>
+<body>
+	<h1>요청문서의 응답결과 인코딩</h1>
+	<hr>
+	<div id="display">Hello. AJAX!!!</div>
+	
+	<!-- 현재 문서와 AJAX를 이용한 요청문서(Text 파일)의 인코딩이 같은 경우 - 정상적인 응답 결과 제공 -->
+	<button type="button" id="btn1">encoding_utf8.txt</button>
+
+	<!-- 현재 문서와 AJAX를 이용한 요청문서(Text 파일)의 인코딩이 다른 경우 - 비정상적인 응답 결과 제공 -->
+	<button type="button" id="btn2">encoding_ms949.txt</button>
+
+	<!-- 현재 문서와 AJAX를 이용한 요청문서(JSP 파일)의 인코딩이 같은 경우 - 정상적인 응답 결과 제공 -->
+	<button type="button" id="btn3">encoding_utf8.jsp</button>
+	
+	<!-- 현재 문서와 AJAX를 이용한 요청문서(JSP 파일)의 인코딩이 다른 경우 - 정상적인 응답 결과 제공 -->
+	<button type="button" id="btn4">encoding_euckr.jsp</button>
+	
+	<script type="text/javascript">
+	var xhr=null;
+	
+	function getXMLHttpRequest() {
+		if(window.activeXObject) {
+			try {
+				return new ActiveXObject("msxml2.XMLHTTP");
+			} catch (e) {
+				try {
+					return new ActiveXObject("MicrosoftXMLHTTP");
+				} catch (e) {
+					return null;
+				}
+			}
+		} else if(window.XMLHttpRequest) {
+			return new XMLHttpRequest();
+		} else {
+			return null;
+		}
+	}	
+	
+	document.getElementById("btn1").onclick=function() {
+		xhr=getXMLHttpRequest();
+		xhr.onreadystatechange=viewMessage;
+		xhr.open("GET","encoding_utf8.txt");
+		xhr.send(null);
+	}
+	
+	document.getElementById("btn2").onclick=function() {
+		xhr=getXMLHttpRequest();
+		xhr.onreadystatechange=viewMessage;
+		xhr.open("GET","encoding_ms949.txt");
+		xhr.send(null);
+	}
+	
+	document.getElementById("btn3").onclick=function() {
+		xhr=getXMLHttpRequest();
+		xhr.onreadystatechange=viewMessage;
+		xhr.open("GET","encoding_utf8.jsp");
+		xhr.send(null);
+	}
+	
+	document.getElementById("btn4").onclick=function() {
+		xhr=getXMLHttpRequest();
+		xhr.onreadystatechange=viewMessage;
+		xhr.open("GET","encoding_euckr.jsp");
+		xhr.send(null);
+	}
+	
+	function viewMessage() {
+		if(xhr.readyState==4) {
+			if(xhr.status==200) {
+				document.getElementById("display").innerHTML=xhr.responseText;
+			} else {
+				document.getElementById("display").innerHTML="에러코드 = "+xhr.status;
+			}
+		}
+	}
+	</script>
+</body>
+</html>
+
+
+
+
+
+

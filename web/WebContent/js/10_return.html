@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+</head>
+<body>
+	<h1>Return</h1>
+	<hr>
+	<p>함수를 종료하기 위한 키워드 
+	- 함수 내부 값을 호출 명령 위치로 반환</p>
+	
+	<script type="text/javascript">
+	function sum(num1,num2) {
+		//매개변수에 저장된 값에 대한 유효성 검사
+		if(isNaN(num1) || isNaN(num2)) {
+			alert("숫자 2개를 전달해 주세요.");
+			return;//함수 종료
+		}
+		return num1+num2;//함수 종료 - 함수 호출 명령으로 값 반환
+	}	
+	
+	//var tot=sum(10,20);
+	//alert("합계 = "+tot);
+	
+	//alert("합계 = "+sum(10,20));
+	
+	//alert("합계 = "+sum());
+	alert("합계 = "+sum("abc",10));
+	</script>
+</body>	
+</html>
+
+
+

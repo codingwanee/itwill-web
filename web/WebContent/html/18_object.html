@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML</title>
+</head>
+<body>
+	<h1>object 태그</h1>
+	<hr>
+	<!-- object 태그 : 멀티미디어 파일 재생 -->
+	<!-- => 하위태그 : param -->
+	<!-- => data 속성 : 재생하고자 하는 멀티미디어 파일 경로(URL)을 속성값으로 설정 -->
+	<!-- => data 속성 : 재생하고자 하는 멀티미디어 파일 유형을 속성값을 설정 -->
+	<object data="audio/old_melody.mp3" type="audio/mp3">
+		<!-- param 태그 : 재생 관련 부가적인 정보 제공 -->
+		<!-- => name 속성: 부가적인 정보에 대한 옵션을 속성값으로 설정 -->
+		<!-- => name 속성: 부가적인 정보에 대한 옵션값을 속성값으로 설정 -->
+		<param name="autoplay" value="false">
+	</object>
+</body>
+</html>

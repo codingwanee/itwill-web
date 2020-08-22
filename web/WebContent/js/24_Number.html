@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+</head>
+<body>
+	<h1>내장클래스 - Number</h1>
+	<hr>
+	<p>숫자형 상수를 저장하는 객체를 생성하기 위한 클래스</p>
+	
+	<script type="text/javascript">
+	/*
+	//var num=new Number(100);
+	var num=new Number("100");
+	
+	//Number.toString(radix) : Number 객체에 저장된 숫자를
+	//원하는 진수의 문자형 상수로 변환하여 반환하는 메소드
+	// => 진수 전달을 생략할 경우 10진수 형태의 문자형 상수로 변환하여 반환
+	//alert("num = "+num.toString(2));
+	//alert("num = "+num.toString());
+	//객체변수를 사용하면 자동으로 toString() 메소드 호출
+	alert("num = "+num);
+	*/
+	
+	/*
+	//var num=100;
+	//alert(typeof(num));//자료형 : 숫자형(number)
+	//내부적으로 Number 객체로 인식되어 Number 클래스의 요소 사용 가능
+	//alert(num.toString(2));
+	
+	//자료형이 객체가 아니므로 요소 추가 불가능
+	num.display=function() {
+		alert("display 메소드 호출");
+	};
+	num.display();
+	*/
+	
+	/*
+	var num=new Number(100);
+	//alert(typeof(num));//자료형 : 객체형(object)
+
+	//자료형이 객체이므로 요소 추가 가능
+	num.display=function() {
+		alert("display 메소드 호출");
+	};
+	num.display();
+	*/
+	
+	/*
+	var num="100";
+	//alert("결과 = "+(num+200));
+	//자료형을 숫자형으로 변환하고자 할 경우 Number 클래스 사용
+	alert("결과 = "+(Number(num)+200));
+	*/
+	
+	var num=12.3456789;
+	//alert("num = "+num);
+	//Number.toFixed(자릿수) : 자릿수 위치의 소숫점까지 값을 반올림하여 반환하는 메소드(자릿수 : 0~20)
+	//alert("num = "+num.toFixed(0));//12
+	//alert("num = "+num.toFixed(1));//12.3
+	//alert("num = "+num.toFixed(2));//12.35
+	
+	alert("최소 숫자형 상수 = "+Number.MIN_VALUE);
+	alert("최대 숫자형 상수 = "+Number.MAX_VALUE);
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+

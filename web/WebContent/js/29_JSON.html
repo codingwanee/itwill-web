@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+</head>
+<body>
+	<h1>내장클래스 - JSON</h1>
+	<hr>
+	<p>자바스크립트 객체 표기법(JSON) 관련 값(프로퍼티)이나 기능(메소드)를 제공하는 클래스</p>
+	
+	<script type="text/javascript">
+	var student={"num":1000,"name":"홍길동"};
+	//alert("학번 = "+student.num+", 이름 = "+student.name);
+	
+	//JSON.stringify(object) : JSON를 이용한 객체를 전달받아 문자형 상수로 변환하여 반환하는 메소드
+	// => 다른 페이지에 객체를 문자형으로 변환하여 전달하기 위해 사용
+	var str=JSON.stringify(student);
+	//alert(str);
+	
+	//JSON.parse(string) : JSON를 이용한 문자형 상수를 전달받아 객체로 변환하여 반환하는 메소드
+	// => 다른 페이지에서 문자형 상수를 제공하야 출력하기 위해 사용
+	var stu=JSON.parse(str);
+	//alert(stu);//Object 객체
+	alert("학번 = "+stu.num+", 이름 = "+stu.name);
+	</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>animate</title>
+<style type="text/css">
+/* 배너 영역 - 이미지 하나만 출력되도록 폭과 높이 설정 */
+#bannerContainer {
+	position: relative;
+	width: 128px;
+	height: 128px;
+	border: 1px solid #cccccc;
+	top: 100px;
+	left: 100px;
+	overflow: hidden;
+}
+
+/* 이미지 영역 - 모든 이미지가 배너 영역 중첩되어 출력 */
+#bannerContainer div {
+	position: absolute;
+	width: 128px;
+	height: 128px;
+	top: 0;
+	background-color: #fff;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	//배너 영역의 높이를 반환받아 저장 - 이미지의 top 좌표값 변경
+	var IMAGE_HEIGHT=$("#bannerContainer").height();
+	//alert(IMAGE_HEIGHT);
+	
+	//이미지 이동 시간을 저장하기 위한 변수
+	var TIMER=2000;
+	
+	//배너 영역에 출력될 현재 이미지의 위치값을 저장하기 위한 변수
+	var currentIndex=0;
+	
+	//배너 영역에 출력될 다음 이미지의 위치값을 저장하기 위한 변수
+	var nextIndex=0;
+	
+	//이미지 영역 저장
+	var $items=$("#bannerContainer").find("div");
+	
+	//이미지 영역의 갯수 저장
+	var count=$items.size();
+	
+	//모든 이미지 영역의 top 좌표값 변경
+	// => 배너 영역 위로 이동하여 보이지 않도록 설정
+	$items.css({"top":-IMAGE_HEIGHT,opacity: 0.0});
+	
+	//첫번째 이미지 영역을 배너 영역에 위치되도록 top 좌표값 변경
+	// => 첫번째 이미지만 보여지도록 설정
+	$items.first().css({"top":0,opacity: 1.0});
+	
+	setInterval(function() {
+		//현재 출력 이미지가 마지막 이미지인 경우
+		// => 첫번째 이미지부터 다시 출력되도록 설정
+		if(currentIndex+1>=count) {
+			nextIndex=0;
+		} else {
+			nextIndex=currentIndex+1;
+		}
+		
+		//배너 영역에 출력된 현재 이미지를 반환받아 저장
+		var $currentImage=$items.eq(currentIndex);
+		
+		//배너 영역에 출력된 다음 이미지를 반환받아 저장
+		var $nextImage=$items.eq(nextIndex);
+		
+		//현재 이미지의 top 좌표값 변경 
+		// => 현재 이미지를 배너 영역 아래로 이동하여 보여지지 않도록 설정
+		$currentImage.animate({"top":IMAGE_HEIGHT,opacity:0.0}, TIMER);
+		
+		//다음 이미지를 배너 영역 위치에 위치되도록 변경
+		$nextImage.css({"top":-IMAGE_HEIGHT,opacity: 0.0});
+		
+		//다음 이미지의 top 좌표값 변경
+		// => 다음 이미지를 배너 영역 위에서 배너 영역으로 이동하여 보여지도록 설정
+		$nextImage.animate({"top":0,opacity:1.0}, TIMER);
+		
+		//현재 이미지의 위치값을 다음 이미지의 위치값으로 변경
+		currentIndex=nextIndex;
+	}, TIMER);
+});	
+</script>
+</head>
+<body>
+	<h1>롤링베너</h1>
+	<hr>
+	<div id="bannerContainer">
+		<div><img src="img1.jpg"></div>
+		<div><img src="img2.jpg"></div>
+		<div><img src="img3.jpg"></div>
+		<div><img src="img4.jpg"></div>
+		<div><img src="img5.jpg"></div>
+		<div><img src="img6.jpg"></div>
+		<div><img src="img7.jpg"></div>
+		<div><img src="img8.jpg"></div>
+		<div><img src="img9.jpg"></div>
+		<div><img src="img10.jpg"></div>
+	</div>
+</body>
+</html>

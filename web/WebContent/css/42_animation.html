@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS</title>
+<style type="text/css">
+#ani {
+	width: 100px;
+	height: 100px;
+	position: relative;
+	
+	/* animation-name : 박스모델에 제공될 애니메이션 이름을 속성값으로 설정 */
+	animation-name: myani;
+	
+	/* animation-duration : 박스모델에 제공된 애니메이션의 지속시간(초)을 속성값으로 설정 */
+	animation-duration: 8s;
+	
+	/* animation-iteration-count : 박스모델에 제공된 애니메이션의 반복횟수를 속성값으로 설정 */
+	/* => infinite : 반복횟수를 무한으로 설정 */
+	animation-iteration-count: infinite;
+
+	/* animation-direction : 박스모델에 제공된 애니메이션의 반대방향 실행(alternate)을 속성값으로 설정 */
+	animation-direction: alternate;
+}
+
+/* @keyframes : 애니메이션의 이름과 상태(동작)을 정의하기 위한 시스템 설정 */
+/* 상태(백분율) : 애니메이션 효과를 구현하기 위한 스타일 속성 선언 */
+/* => 시작상태와 종료상태등 2개 이상의 상태 선언 */
+@keyframes myani {
+	/* 시작상태 */
+	0% {
+		top: 0;
+		left: 10px;
+		background: url("images/f1.png") no-repeat center center padding-box;
+	}
+	
+	25% {
+		top: 0;
+		left: 500px;
+		background: url("images/f2.png") no-repeat center center padding-box;
+	}
+	
+	50% {
+		top: 300px;
+		left: 500px;
+		background: url("images/f1.png") no-repeat center center padding-box;
+	}
+	
+	75% {
+		top: 300px;
+		left: 10px;
+		background: url("images/f2.png") no-repeat center center padding-box;
+	}
+	
+	/* 종료상태 */
+	100% {
+		top: 0;
+		left: 10px;
+		background: url("images/f1.png") no-repeat center center padding-box;
+	}
+}
+</style>
+</head>
+<body>
+	<h1>애니메이션 관련 스타일 속성</h1>
+	<hr>
+	<div id="ani"></div>
+</body>
+</html>

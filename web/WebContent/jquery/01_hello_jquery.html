@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery</title>
+<!-- jQuery 라이브러리 파일을 문서에 포함해야만 jQuery 기능 사용 가능 -->
+
+<!-- 1.https://code.query.com 사이트에서 jQuery 라이브러리 파일을 다운로드 받아 문서에 포함 -->
+<!-- => jQuery 라이브러리 파일 : 1.X(IE9이하) or 2.X 이상(IE10 이상) -->
+<!-- => 미압축파일(jQuery 라이브러리 변경 가능) 또는 압축파일(jQuery 라이브러리 변경 불가능) -->
+<!-- <script type="text/javascript" src="jquery-1.12.4.min.js"></script> -->
+
+<!-- 2.CDN 서버의 jQuery 라이브러리 파일을 제공받아 문서에 포함(권장) -->
+<!-- => CDN(Contents Delivery Network) : 대용량의 콘텐츠를 빠르고 
+안정적으로전송하기 위한 서비스를 제공하는 서버 -->
+<!-- => Google CDN, Microsoft CDN 등 사용 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+//jQuery 명령은 CSS 선택자로 엘리먼트를 검색하여 jQuery
+//객체 생성 후 jQuery 메소드를 호출하여 기능 구현
+//형식) jQuery(Selector).method(값,...);
+// => document 객체가 반드시 완성되어야만 사용 가능
+
+//window 객체의 onload 이벤트 핸들러에서 jQuery 사용
+// => 가독성이 좋지 않으며 이벤트 핸들러가 하나만 등록되어 사용
+/*
+window.onload=function() {
+	alert("window.onload 이벤트에 대한 이벤트 핸들러 동작-1");
+}
+
+window.onload=function() {
+	alert("window.onload 이벤트에 대한 이벤트 핸들러 동작-2");
+};
+*/
+
+/*
+//jQuery(document).ready(callback) : document 객체를 
+//검색하여 준비된 경우 콜백함수의 명령을 실행하는 메소드
+// => 가독성이 좋으며 ready 메소드를 여러번 호출하여 사용 가능
+jQuery(document).ready(function() {
+	alert("document 객체에 대한 ready() 메소드 호출-1");
+});
+
+jQuery(document).ready(function() {
+	alert("document 객체에 대한 ready() 메소드 호출-2");
+});
+*/
+
+//jQuery 함수명 대신 $ 기호 사용
+$(document).ready(function() {
+	$("h1").css("color","red");
+});
+</script>
+</head>
+<body>
+	<h1>jQuery 사용</h1>
+	<hr>
+	<p>Hello. jQuery!!!</p>
+	<p>Hello. jQuery!!!</p>
+	<p>Hello. jQuery!!!</p>
+	
+	<script type="text/javascript">
+	//script 태그를 body 태그의 마지막 자식 태그로 선언한\
+	//경우 $(document).ready() 메소드 호출 생략 가능
+	$("p").css("color","green");//묵시적 반복
+	</script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML</title>
+</head>
+<body>
+	<h1>label 태그</h1>
+	<hr>
+	<h3>label 태그 미사용</h3>
+	<!-- 입력태그의 박스모델을 선택하여 입력촛점을 제공받아 사용 -->
+	이름 : <input type="text"><br>
+	취미 : <input type="checkbox">등산&nbsp;&nbsp;
+	       <input type="checkbox">낚시&nbsp;&nbsp;
+	       <input type="checkbox">게임&nbsp;&nbsp;
+	       <input type="checkbox">독서&nbsp;&nbsp;
+	<hr> 
+	<h3>label 태그 사용</h3>
+	<!-- label 태그 : 입력태그에 촛점 제공 -->
+	<!-- => for 속성 : 입력촛점을 제공할 태그의 고유값을 속성값으로 설정  -->
+	<label>이름 : <input type="text"></label><br>
+	취미 : <input type="checkbox" id="hobby1"><label for="hobby1">등산</label>&nbsp;&nbsp;
+	       <input type="checkbox" id="hobby2"><label for="hobby2">낚시</label>&nbsp;&nbsp;
+	       <input type="checkbox" id="hobby3"><label for="hobby3">게임</label>&nbsp;&nbsp;
+	       <input type="checkbox" id="hobby4"><label for="hobby4">독서</label>
+	<hr>           
+</body>
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,146 @@
+<!-- 키워드를 입력받아 키워드가 포함된 제시어를 제공하는 문서 -->
+<!-- => 키워드가 포함된 제시어 관련 정보를 suggest.jsp 문서에게 요청하여 XML 텍스트 데이타로 응답받아 처리 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AJAX</title>
+<script type="text/javascript" src="/ajax/js/ajax.js"></script>
+<style type="text/css">
+#keyword {
+	position: absolute;
+	top: 100px;
+	left: 10px;
+	width: 300px;
+	font-size: 16px;
+}
+
+#suggest {
+	position: absolute;
+	top: 125px;
+	left: 10px;
+	width: 300px;
+	border: 1px solid black;
+	cursor: pointer;
+	font-size: 16px;
+	z-index: 999;
+	background-color: rgba(255,255,255,1);
+	display: none;
+}
+
+#choice {
+	position: absolute;
+	top: 130px;
+	left: 10px;
+}
+
+a, a:visited {
+	color: black;
+	text-decoration: none;
+}
+
+#suggest a:hover {
+	color: red;
+}
+
+#choice a:hover {
+	color: blue;
+	text-decoration: underline;
+}
+</style>
+</head>
+<body>
+	<h1>제시어 기능 - DB 사용</h1>
+	<hr>
+	<div>
+		<!-- 키워드를 입력받기 위한 태그 -->
+		<input type="text" id="keyword">
+		
+		<!-- 제시어를 제공받아 출력하기 위한 태그 -->
+		<div id="suggest">
+			<div id="suggestList"></div>
+		</div>
+		
+		<!-- 선택된 제시어 정보를 출력하기 위한 태그 -->
+		<div id="choice"></div>
+	</div>	
+	
+	<script type="text/javascript">
+	document.getElementById("keyword").focus();
+	
+	//키워드 입력태그에서 키보드 이벤트가 발생된 경우 실행되는 이벤트 핸들러 함수 등록
+	// => 키워드가 포함된 제시어 관련 정보를 요청하여 응답 처리 함수를 설정
+	document.getElementById("keyword").onkeyup=function() {
+		var keyword=document.getElementById("keyword").value;
+		if(keyword=="") {
+			document.getElementById("suggest").style.display="none";
+			return;
+		}
+		
+		//요청문서(suggest.jsp)에 전달될 변수와 값 설정
+		var params="keyword="+keyword;
+				
+		//AJAX 기능을 이용하여 문서(suggest.jsp) 요청
+		new site.itwill.Ajax("POST", "suggest.jsp", params, displaySuggest);
+	};
+	
+	//요청문서의 응답 결과를 제공받아 출력하는 함수
+	function displaySuggest(req) {
+		if(req.readyState==4) {
+			if(req.status==200) {
+				var xmlDoc=req.responseXML;
+				
+				var code=xmlDoc.getElementsByTagName("code").item(0).firstChild.nodeValue;
+				//alert("code = "+code);
+				
+				if(code=="success") {//제시어 관련 정보가 검색된 경우
+					var data=xmlDoc.getElementsByTagName("data").item(0).firstChild.nodeValue;
+					
+					var suggestArray=JSON.parse(data);
+					//alert("검색 제시어 갯수 = "+suggestArray.length);
+					
+					var html="";
+					for(i=0;i<suggestArray.length;i++) {
+						html+="<a href=\"javascript:selectSuggest('"
+							+suggestArray[i].word+"','"+suggestArray[i].address
+							+"');\">"+suggestArray[i].word+"</a><br>";
+					}
+					document.getElementById("suggestList").innerHTML=html;
+					
+					document.getElementById("suggest").style.display="block";
+				} else {//제시어 관련 정보가 검색되지 않은 경우
+					document.getElementById("suggest").style.display="none";
+				}				
+			} else {
+				alert("에러코드 = "+req.status);
+			}
+		}
+	}
+	
+	//선택된 제시어 관련 정보를 출력하는 함수
+	// => 제시어를 클릭할 경우 링크 URL 주소로 이동
+	function selectSuggest(word,address) {
+		//alert(word+" = "+address);
+		document.getElementById("keyword").value=word;
+		
+		var html="";
+		if(address=='null') {
+			html+=word;
+		} else {
+			html+="<a href='"+address+"'>"+word+"</a>";
+		}
+		
+		document.getElementById("choice").innerHTML=html;
+		document.getElementById("suggest").style.display="none";
+	}
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+

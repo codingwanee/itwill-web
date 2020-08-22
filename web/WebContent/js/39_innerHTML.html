@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+</head>
+<body>
+	<h1>DOM(Document Object Model) - innerHTML</h1>
+	<hr>
+	<ul>
+		<li>메뉴-1</li>
+		<li>메뉴-2</li>
+		<li>메뉴-3</li>
+	</ul>
+	<ul>
+		<li>메뉴-4</li>
+		<li>메뉴-5</li>
+		<li>메뉴-6</li>
+	</ul>
+	<div id="div"></div>
+	<hr>
+	
+	<script type="text/javascript">
+	/*
+	var pE=document.createElement("p");//<p></p>
+	var pTN=document.createTextNode("p 태그의 내용");
+	pE.appendChild(pTN);//<p>p 태그의 내용</p>
+	var divE=document.getElementById("div");
+	divE.appendChild(pE);
+	*/
+	
+	var ulList=document.getElementsByTagName("ul");
+	var liList=ulList.item(1).getElementsByTagName("li");
+	var newTN=document.createTextNode("신메뉴");
+	//Element.replaceChild(newElement,oldElement) : 기존
+	//자식 엘리먼트 객체를 새로운 엘리먼트 객체를 변경하는 메소드
+	liList.item(1).replaceChild(newTN, liList.item(1).firstChild);
+	
+	var divE=document.getElementById("div");
+	//Element.innerHTML : 엘리먼트 객체에 HTML 태그 정보를 저장하는 프로퍼티
+	// => 프로퍼티를 변경하여 엘리먼트 객체의 HTML 태그 변경(구조 변경)
+	divE.innerHTML="<p>p 태그의 내용</p>";
+	</script>
+</body>
+</html>
+
+
+
+
+

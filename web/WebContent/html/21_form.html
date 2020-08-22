@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML</title>
+</head>
+<body>
+	<h1>form 태그</h1>
+	<hr>
+	<!-- 현재 문서(입력페이지)의 값을 다른 문서(액션페이지)로 전달하는 방법 -->
+	<!-- 1.URL 주소에 QueryString을 이용 -->
+	<!-- 2.form 태그를 이용 -->
+	
+	<!-- 클라이언트의 자원 요청 방식(값 전달 방식) - method -->
+	<!-- 1.GET : 값을 URL 주소의 QueryString으로 전달하여 요청 -->
+	<!-- => 소용량의 일반적인 값을 전달하고자 할 경우 사용 -->
+	<!-- 2.POST : 값을 리퀘스트(Request) 메세지로 전달하여 요청 - form 태그  -->
+	<!-- => 대용량 값 또는 보안을 필요로 하는 값을 전달하고자 할 경우 사용 -->
+
+	<!-- form 태그 : 값을 액션 페이지(Servlet & JSP)로 전달 -->
+	<!-- => action 속성 : 값을 전달할 페이지의 URL 주소를 속성값 설정 - 생략 : 현재 페이지에서 값 전달 -->
+	<!-- => method 속성 : 요청 방식(값을 전달하는 방식)을 속성값으로 설정 - get(기본), post -->
+	<!-- => enctype 속성 : 값을 전달하는 형식을 속성값으로 설정 - application/x-www-form-urlencoded(기본), multipart/form-data -->
+	<!-- => "application/x-www-form-urlencoded" : 텍스트값(문자열), "multipart/form-data" : 원시값(파일 전달) -->
+	<!-- => 하위태그 : input, select, textarea등 -->
+	<form action="" method="post" name="loginForm">
+		<!-- 값 입력 기능의 태그가 반드시 존재 -->
+		<!-- => input, select, textarea등 -->
+		아이디 : <input type="text" name="id"><br>
+		비밀번호 : <input type="password" name="passwd"><br>
+		<!-- 값 전달(Submit) 기능의 태그가 반드시 존재 - 클릭 이벤트에 대한 값 전달 -->
+		<!-- => input, button등 -->
+		<input type="submit" value="전송">
+	</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

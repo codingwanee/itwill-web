@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+<style type="text/css">
+#displayDiv {
+	width: 600px;
+	margin: 0 auto;
+	padding: 30px 0;
+	font-size: 2em;
+	font-weight: bold;
+	text-align: center;
+	border: 2px solid black;
+}
+</style>
+</head>
+<body>
+	<h1>DOM(Document Object Model) - 디지털 시계</h1>
+	<hr>
+	<div id="displayDiv">2019년 6월 21일 12시 12분 10초</div>
+	
+	<script type="text/javascript">
+	var displayClock=function() {
+		var now=new Date();
+		var printDate=now.getFullYear()+"년 "
+			+(now.getMonth()+1)+"월 "+now.getDate()+"일 "
+			+now.getHours()+"시 "+now.getMinutes()+"분 "
+			+now.getSeconds()+"초";
+		var displayDiv=document.getElementById("displayDiv");
+		displayDiv.innerHTML=printDate;
+	};
+	
+	displayClock();
+	setInterval(displayClock, 1000);
+	</script>
+</body>
+</html>
+
+
+
+

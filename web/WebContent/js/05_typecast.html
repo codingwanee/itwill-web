@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+</head>
+<body>
+	<h1>자바스트립트 형변환</h1>
+	<hr>
+	<p>자동 형변환 - 연산자에 의해 자료형이 자동으로 변환</p>
+	<p>강제 형변환 - 자료형 관련 클래스 함수를 이용하여 자료형을 강제로 변환</p>
+	
+	<script type="text/javascript">
+	//+ 연산자의 피연산자가 모두 숫자형(논리형)인 경우 산술 연산
+	//alert(20+10);
+	
+	//+ 연산자의 두 피연산자 중 한개라도 문자형인 경우 결합 연산
+	//alert("20"+10);
+	//alert(20+"10");
+	//alert("20"+"10");
+	
+	//+ 연산자를 제외한 산술 연산자는 피연산자를 무조건 숫자형으로 자동 형변환하여 연산
+	//alert(20-10);	
+	//alert("20"-10);	
+	//alert(20-"10");	
+	//alert("20"-"10");
+	
+	//NaN(Not a Number) : 숫자형으로 형변환 될 수 없는 경우에 표현되는 상수
+	//alert("abc"-10);
+	
+	//Number(String) : 문자형 상수를 숫자형 상수로 변환하여 반환하는 함수 - NaN 발생
+	//alert(Number("20")+10);	
+	//alert(Number("abc")+10);
+	
+	//Boolean(String|Number) : 문자형 상수 또는 숫자형 상수를 논리형 상수로 변환하여 반환하는 함수 
+	//alert(Boolean(0));//false - 0
+	//alert(Boolean(100));//true - 0를 제외한 숫자형 상수
+	
+	//alert(Boolean(""));//false - NullString
+	//alert(Boolean("abc"));//true - NullString를 제외한 문자형 상수
+	
+	//alert(Boolean(null));//false
+	//alert(Boolean(undefined));//false
+	
+	//String(Number|Boolean) : 숫자형 상수 또는 논리형 상수를 문자형으로 변환하여 반환하는 함수
+	//alert(typeof(100));
+	//alert(typeof(String(100)));
+	alert(typeof(100+""));//문자형 상수와 결합하여 문자형 상수로 변환 가능
+	</script>
+</body>
+</html>
+
+
+

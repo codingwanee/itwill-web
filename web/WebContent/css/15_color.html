@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS</title>
+<style type="text/css">
+/* color : 글자식 관련 스타일 속성 */
+/* 색 관련 키워드를 속성값으로 설정 - red green blue 등 */
+.color1 { color: red; }
+
+/* 16진수로 표현된 색을 속성값으로 설정 - #RGB 또는 #RRGGBB   */
+.color2 { color: #00ff00; }
+
+/* rgb 함수로 표현된 색을 속성값으로 설정 - rgb(RED:0~255,GREEN:0~255,BLUE:0~255) */
+.color3 { color: rgb(0,0,255); }
+
+/* hsl 함수로 표현된 색을 속성값으로 설정 - hsl(색상:0~360,채도:0~100%,명도:0~100%) */
+.color4 { color: hsl(200,100%,50%); }
+
+/* rgba 함수로 표현된 색을 속성값으로 설정 - rgb(RED:0~255,GREEN:0~255,BLUE:0~255,A:0.0~1.0) */
+.color5 { color: rgba(0,0,255,0.5); }
+
+/* hsla 함수로 표현된 색을 속성값으로 설정 - hsl(색상:0~360,채도:0~100%,명도:0~100%,A:0.0~1.0) */
+.color6 { color: hsla(200,100%,50%,.5); }
+</style>
+</head>
+<body>
+	<h1>글자색 관련 스타일 속성</h1>
+	<hr>
+	<h2 class="color1">글자색-1</h2>
+	<h2 class="color2">글자색-2</h2>
+	<h2 class="color3">글자색-3</h2>
+	<h2 class="color4">글자색-4</h2>
+	<h2 class="color5">글자색-5</h2>
+	<h2 class="color6">글자색-6</h2>
+</body>
+</html>

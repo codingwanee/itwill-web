@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS</title>
+<!-- link 태그 : 외부 파일을 불러와 내용 포함하는 기능 제공 -->
+<!-- => CSS 파일을 읽어 현재 문서에 CSS 스타일 적용 -->
+<!-- => 모든 문서에 동일한 스타일을 적용하기 위해 사용(사이트 일관성) -->
+<link href="04_style.css" rel="stylesheet" type="text/css">
+
+<!-- style 태그에 선택자를 이용하여 엘리먼트를 선택하고 
+CSS 속성과 속성값을 선언하여 선택된 엘리먼트에 스타일 적용 -->
+<!-- => 선택자로 선택된 모든 엘리먼트에 스타일 적용 -->
+<style type="text/css">
+h2 {
+	color: green;
+}
+/*
+h3 {
+	color: blue;
+}
+
+h4 {
+	color: maroon;
+}
+*/
+</style>
+</head>
+<body>
+	<h1>CSS 스타일 적용 방법</h1>
+	<hr>
+	<!-- 태그의 style 속성에 CSS 속성과 속성값으로 엘리먼트에 스타일 적용 -->
+	<!-- => 엘리먼트 하나에만 스타일 적용 -->
+	<h2 style="color: red;">토규먼트 영역에 출력될 아주 중용한 내용입니다.</h2>
+	<h3>토규먼트 영역에 출력될 아주 중용한 내용입니다.</h3>
+	<h4>토규먼트 영역에 출력될 아주 중용한 내용입니다.</h4>
+</body>
+</html>

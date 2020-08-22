@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+	<h1>선택자(Selector)</h1>
+	<hr>
+	<p>후손 선택자, 자식 선택자</p>
+	<hr>
+	<div id="subject">
+		<p>Java 과정</p>
+		<div>
+			<p>1.기본문법</p>
+			<p>2.객체 지향 프로그래밍(OOP)</p>
+			<p>3.Java API 활용</p>
+		</div>
+		<p>JSP 과정</p>
+		<div>
+			<p>1.스크립팅 요소</p>
+			<p>2.지시어</p>
+			<p>3.표준 액션 태그</p>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+	//자식 선택자 : 부모 선택자 바로 아래에 존재하는 엘리먼트를 검색하기 위한 선택자
+	//형식) 부모선택자 > 자식선택자
+	//$("#subject > p").css({"font-size":"25px","font-weight":"bold"});
+	
+	//$(selector).children([selector]) : 부모 선택자로
+	//검색된 엘리먼트의 자식 엘리먼트 중 선택자를 이용하여
+	//원하는 엘리먼트를 선택하는 메소드
+	// => children() 메소드의 선택자 전달이 생략된 경우 모든 자식 엘리먼트 검색
+	$("#subject").children("p").css({"font-size":"25px","font-weight":"bold"});
+
+	//후손 선택자 : 부모 선택자 하위에 존재하는 모든 엘리먼트를 검색하기 위한 선택자
+	//형식) 부모선택자 자식선택자
+	//$("#subject p").css("color","green");
+	
+	//$(selector).find(selector) : 부모 선택자로 검색된
+	//엘리먼트의 후손 엘리먼트 중 선택자를 이용하여 원하는
+	//엘리먼트를 선택하는 메소드
+	// => find() 메소드에 선택자가 전달되지 않을 경우 에러 발생
+	$("#subject").find("p").css("color","green");
+	</script>
+</body>
+</html>

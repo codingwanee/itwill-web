@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+</head>
+<body>
+	<h1>내장함수 - parseInt() 함수와 parseFloat() 함수</h1>
+	<hr>
+	<p>parseInt(value) : 전달값을 정수로 변환하여 반환하는 함수</p> 
+	<p>parseFloat(value) : 전달값을 실수로 변환하여 반환하는 함수</p>
+	
+	<script type="text/javascript">
+	var result=50/3;
+	//alert("result = "+result);
+	//alert("result = "+parseInt(result));
+	
+	//parseInt(String[,radix]) : 진수형식의 문자형 상수를 전달받아 10진수 정수 상수로 변환
+	// => 진수가 생략된 경우 10진수로 인식 : 문자형 상수를 숫자형 상수로 변환
+	//alert(parseInt(123, 8));
+	//alert(parseInt(123, 16));
+	//alert(parseInt("abc", 16));
+	
+	//var num="100";
+	//alert(num+200);//문자 결합
+	//alert(Number(num)+200);//산술 연산
+	//alert(parseInt(num,10)+200);//산술 연산 - 진수 생략 가능
+	
+	var num="100abc";
+	//alert(Number(num)+200);//결과 : NaN
+	//parseInt() 함수를 이용하면 앞부분 숫자만 잘라내어 정수로 변환
+	alert(parseInt(num)+200);//결과 : 300
+	</script> 
+</body>
+</html>

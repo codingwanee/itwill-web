@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML</title>
+</head>
+<body>
+	<h1>img 태그</h1>
+	<hr>
+	<!-- img 태그 : 서버에 존재하는 이미지 파일을 출력 -->
+	<!-- => 이미지 파일 : GIF 파일, PNG 파일, JPG 파일등 -->
+	<!-- => src 속성 : 출력될 이미지 파일의 경로(URL 주소)를 속성값으로 설정 -->
+	<!-- => alt 속성 : 출력 이미지에 대한 설명을 속성값으로 설정(음성지원) -->
+	<!-- => title 속성 : 출력 이미지에 대한 설명을 속성값으로 설정(툴팁지원) -->
+	<!--해당 자원이 존재하지 않을 경우 404(Not Found) 발생 -->
+	<img alt="다음 로고" title="다음 로고" src="https://t1.daumcdn.net/daumtop_chanel/op/20170315064553027.png">
+	<hr>
+	<img alt="코알라" src="http://localhost:8000/web/html/images/Koala.jpg" width="200">
+	<!-- 동일 서버에 존재하는 자원은 컨텍스트 자원으로 표현 -->
+	<!-- 절대경로표현 : Context Root 디렉토리(/)를 기준으로 자원 경로 표현 -->
+	<!-- => CSL(HTML,CSS,JavaScript)에서는 Context Root로 최상위 자원 표현 -->
+	<!-- => 형식) /ContextName/Directory/FileName -->
+	<img alt="코알라" src="/web/html/images/Koala.jpg" width="200">
+	<!-- 상대경로표현 : 현재 문서의 위치를 기준으로 자원 경로 표현 -->
+	<img alt="코알라" src="images/Koala.jpg" width="200">
+	<hr>
+	<img alt="펭귄" src="/web/html/Penguins.jpg" width="200">
+	<img alt="펭귄" src="Penguins.jpg" width="200">
+	<hr>
+	<img alt="튤립" src="/web/Tulips.jpg" width="200">
+	<img alt="튤립" src="../Tulips.jpg" width="200">
+</body>
+</html>

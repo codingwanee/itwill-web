@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+</head>
+<body>
+	<h1>Submit Event</h1>
+	<hr>
+	<form name="loginForm" action="" method="post">
+	<table>
+		<tr>
+			<td>아이디</td>
+			<td><input type="text" name="id"></td>
+		</tr>
+		<tr>
+			<td>비밀번호</td>
+			<td><input type="password" name="passwd"></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<!-- form 태그의 입력값을 전달할 수 있는 기능이 구현된 태그 -->
+				<button type="submit">로그인</button>
+			</td>
+		</tr>
+	</table>	
+	</form>
+	
+	<script type="text/javascript">
+	loginForm.id.focus();
+	
+	//FormElement.onsubmit : form 태그의 입력값이 전달될 경우 발생되는 이벤트에 대한 속성
+	//form 태그의 전달 기능이 구현될 경우 처리될 이벤트 핸들러 등록
+	loginForm.onsubmit=function() {
+		//alert("전달 이벤트 발생");
+		
+		if(loginForm.id.value=="") {
+			alert("아이디를 반드시 입력해 주세요.");
+			loginForm.id.focus();
+			
+			/*
+			//버튼에 부여된 기본 이벤트 핸들러(전달 기능) 종료 
+			event.preventDefault();
+			return;
+			*/
+			
+			//이벤트 핸들러에서 true를 반환한 경우 이벤트 핸들러만 중지되며
+			//false를 반환하는 경우 이벤트 핸들러 중지 및 기본 이벤트 제거와 
+			//이벤트 전달 중지
+			return false;
+		}
+
+		var idReg=/^[a-zA-Z]\w{5,19}$/g;
+		if(!idReg.test(loginForm.id.value)) { 
+			alert("아이디를 형식에 맞게 입력해 주세요.");
+			loginForm.id.focus();
+			return false;
+		}
+		
+		if(loginForm.passwd.value=="") {
+			alert("비밀번호를 반드시 입력해 주세요.");
+			loginForm.passwd.focus();
+			return false;
+		}
+		
+		return true;
+	}
+	</script>	
+</body>
+</html>
+
+
+
+
